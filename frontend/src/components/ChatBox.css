@@ -1,0 +1,5 @@
+#chat-area-parent {
+  height: 100vh; /* Ensure the parent takes full viewport height */
+  display: flex;
+  flex-direction: column;
+}
