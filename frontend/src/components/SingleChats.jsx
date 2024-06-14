@@ -125,9 +125,9 @@ const SingleChats = ({ fetchAgain, setFetchAgain }) => {
           },
           config
         );
-
-        setMessages([...messages, data]);
         socket.emit("new message", data);
+        setMessages([...messages, data]);
+        
       } catch (error) {
         toast({
           title: "Error Occured!",
