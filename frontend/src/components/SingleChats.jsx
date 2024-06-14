@@ -23,7 +23,7 @@ import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 import { useLocation } from "react-router-dom";
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://chatup-mern-project.onrender.com";
 var socket, selectedChatCompare;
 
 const SingleChats = ({ fetchAgain, setFetchAgain }) => {
