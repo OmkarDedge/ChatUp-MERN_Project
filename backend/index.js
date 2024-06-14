@@ -50,12 +50,13 @@ const server = app.listen(PORT, () => {
 });
 
 const io = require("socket.io")(server, {
-  pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chatup-mern-project.onrender.com",
     credentials: true,
   },
+  pingTimeout: 60000,
 });
+
 
 io.on("connection", (socket) => {
   console.log("Connected to socket.io");
