@@ -41,7 +41,7 @@ const MyChats = ({ fetchAgain }) => {
   };
 
   useEffect(() => {
-    setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
+    setLoggedUser(JSON.parse(sessionStorage.getItem("userInfo")));
     fetchChats();
   }, [fetchAgain, user]); // Add user to the dependency array
 
