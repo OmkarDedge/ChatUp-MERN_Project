@@ -12,7 +12,7 @@ const ChatsPage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("userInfo"));
+    const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
     if (!user || (storedUser && storedUser._id !== user._id)) {
       setUser(storedUser);
     }
