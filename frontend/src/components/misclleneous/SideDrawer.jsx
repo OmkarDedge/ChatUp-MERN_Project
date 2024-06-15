@@ -57,7 +57,7 @@ const SideDrawer = () => {
   const toast = useToast();
 
   const logoutHandler = () => {
-    localStorage.removeItem("userInfo");
+    sessionStorage.removeItem("userInfo");
     // Remove the cookie by setting it to expire immediately
     document.cookie =
       "userInfo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
