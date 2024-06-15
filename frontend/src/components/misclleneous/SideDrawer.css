@@ -1,0 +1,25 @@
+.drawer-content {
+  width: 400px; /* Adjust the width as needed */
+}
+
+.drawer-header {
+  background-color: cyan;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px;
+}
+
+/* Ensure the color does not change on hover */
+.drawer-header:hover {
+  background-color: cyan;
+}
+
+.search-input {
+  border: 2px solid cyan;
+  box-shadow: 0px 0px 5px cyan;
+}
+
+.search-button {
+  background-color: blue;
+  color: cadetblue;
+}
