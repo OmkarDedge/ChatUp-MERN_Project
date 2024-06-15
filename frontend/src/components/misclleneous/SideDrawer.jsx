@@ -33,6 +33,7 @@ import { ChatState } from "../../context/chatContext";
 import UserListItem from "../UserAvatar/UserListItem";
 import ChatLoading from "../ChatLoading";
 import { getSender } from "../../config/ChatLogics";
+import "./SideDrawer.css";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -139,7 +140,13 @@ const SideDrawer = () => {
         borderWidth="5px"
       >
         <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
-          <Button variant="ghost" onClick={onOpen}>
+          <Button
+            variant="solid"
+            bg="blue.400"
+            color="black"
+            onClick={onOpen}
+            _hover={{ bg: "blue.400" }}
+          >
             <i className="fas fa-search"></i>
             <Text display={{ base: "none", md: "flex" }} px={4}>
               Search User
@@ -197,8 +204,10 @@ const SideDrawer = () => {
 
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
-        <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
+        <DrawerContent className="drawer-content">
+          <DrawerHeader borderBottomWidth="1px" className="drawer-header">
+            Search Users
+          </DrawerHeader>
           <DrawerBody>
             <Box display="flex" pb={2}>
               <Input
@@ -206,8 +215,11 @@ const SideDrawer = () => {
                 mr={2}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                className="search-input"
               />
-              <Button onClick={handleSearch}>Go</Button>
+              <Button onClick={handleSearch} className="search-button">
+                Go
+              </Button>
             </Box>
             {loading ? (
               <ChatLoading />
