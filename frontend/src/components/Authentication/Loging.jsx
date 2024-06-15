@@ -53,7 +53,7 @@ const Loging = () => {
         position: "bottom",
       });
 
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      sessionStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       history.push("/chats");
     } catch (error) {
