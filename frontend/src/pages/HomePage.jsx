@@ -18,17 +18,16 @@ const HomePage = () => {
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    const user = JSON.parse(sessionStorage.getItem("userInfo"));
+    const user = JSON.parse(JSON.parse(sessionStorage.getItem("userInfo")));
+    const hasReloaded = sessionStorage.getItem("hasReloaded");
 
-    if (!user) {
-      if (!isFirstRender.current) {
-        history.push("/");
-      } else {
-        isFirstRender.current = false;
-      }
+    if (user) {
+      history.push("/chats");
+    } else if (!hasReloaded) {
+      sessionStorage.setItem("hasReloaded", "true");
+      window.location.reload();
     }
   }, [history]);
-
   return (
     <Container maxW={"xl"} centerContent>
       <Box
