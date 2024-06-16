@@ -17,13 +17,17 @@ const HomePage = () => {
   const history = useHistory();
 
   useEffect(() => {
-    const user = JSON.parse(JSON.parse(sessionStorage.getItem("userInfo")));
+    const user = JSON.parse(sessionStorage.getItem("userInfo"));
     const hasReloaded = sessionStorage.getItem("hasReloaded");
+
+    console.log("User Info:", user);
+    console.log("Has Reloaded:", hasReloaded);
 
     if (user) {
       history.push("/chats");
     } else if (!hasReloaded) {
       sessionStorage.setItem("hasReloaded", "true");
+      console.log("Reloading the page...");
       window.location.reload();
     }
   }, [history]);
