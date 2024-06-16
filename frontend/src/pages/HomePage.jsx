@@ -28,7 +28,7 @@ const HomePage = () => {
     } else if (!hasReloaded) {
       sessionStorage.setItem("hasReloaded", "true");
       console.log("Reloading the page...");
-      window.location.reload();
+      window.location.replace(window.location.href); // Use replace to prevent infinite loop
     }
   }, [history]);
 
