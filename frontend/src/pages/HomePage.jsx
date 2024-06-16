@@ -9,7 +9,6 @@ import {
   Tab,
   TabPanel,
 } from "@chakra-ui/react";
-
 import Loging from "../components/Authentication/Loging";
 import SignUp from "../components/Authentication/SignUp";
 import { useHistory } from "react-router-dom";
@@ -18,9 +17,15 @@ const HomePage = () => {
   const history = useHistory();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userInfo"));
+    const user = JSON.parse(JSON.parse(sessionStorage.getItem("userInfo"));
+    const hasReloaded = sessionStorage.getItem("hasReloaded");
 
-    if (user) history.push("/chats");
+    if (user) {
+      history.push("/chats");
+    } else if (!hasReloaded) {
+      sessionStorage.setItem("hasReloaded", "true");
+      window.location.reload();
+    }
   }, [history]);
 
   return (
