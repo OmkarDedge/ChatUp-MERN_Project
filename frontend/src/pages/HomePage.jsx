@@ -25,12 +25,12 @@ const HomePage = () => {
 
     if (user) {
       history.push("/chats");
-    } else  {
-      
+    } else if (!hasReloaded) {
+      sessionStorage.setItem("hasReloaded", "true");
       console.log("Reloading the page...");
-      window.location.replace(window.location.href); // Use replace to prevent infinite loop
+      window.location.reload();
     }
-  }, []);
+  });
 
   return (
     <Container maxW={"xl"} centerContent>
