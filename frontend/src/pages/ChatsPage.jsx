@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { ChatState } from "../context/chatContext";
 import SideDrawer from "../components/misclleneous/SideDrawer";
 import MyChats from "../components/MyChats";
@@ -7,16 +7,25 @@ import ChatBox from "../components/ChatBox";
 import "./ChatPage.css"; // Import the CSS file
 
 const ChatsPage = () => {
+  const history = useHistory();
+  const location = useLocation();
   const { user, setUser, selectedChat, setSelectedChat } = ChatState();
   const [fetchAgain, setFetchAgain] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
+
+    // Redirect to HomePage if no userInfo found in sessionStorage
+    if (!storedUser) {
+      history.push("/");
+      return;
+    }
+
+    // Update user state if sessionStorage user differs from context user
     if (!user || (storedUser && storedUser._id !== user._id)) {
       setUser(storedUser);
     }
-  }, [location, user, setUser]);
+  }, [history, user, setUser]);
 
   useEffect(() => {
     // Ensure fetchAgain triggers a reload when selectedChat changes
