@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Box,
   Container,
@@ -15,22 +15,19 @@ import { useHistory } from "react-router-dom";
 
 const HomePage = () => {
   const history = useHistory();
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem("userInfo"));
-    const hasReloaded = sessionStorage.getItem("hasReloaded");
 
-    console.log("User Info:", user);
-    console.log("Has Reloaded:", hasReloaded);
-
-    if (user) {
-      history.push("/chats");
-    } else if (!hasReloaded) {
-      sessionStorage.setItem("hasReloaded", "true");
-      console.log("Reloading the page...");
-      window.location.reload();
+    if (!user) {
+      if (!isFirstRender.current) {
+        history.push("/");
+      } else {
+        isFirstRender.current = false;
+      }
     }
-  });
+  }, [history]);
 
   return (
     <Container maxW={"xl"} centerContent>
