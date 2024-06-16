@@ -17,7 +17,7 @@ const HomePage = () => {
   const history = useHistory();
 
   useEffect(() => {
-    const user = JSON.parse(JSON.parse(sessionStorage.getItem("userInfo"));
+    const user = JSON.parse(JSON.parse(sessionStorage.getItem("userInfo")));
     const hasReloaded = sessionStorage.getItem("hasReloaded");
 
     if (user) {
