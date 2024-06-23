@@ -43,6 +43,10 @@ const HomePage = () => {
         <Text fontSize="4xl" fontFamily="Work sans">
           Chat-Up
         </Text>
+
+        <Text fontSize="1xl" fontFamily="Work sans">
+          InterNest users should login with same credentials.
+        </Text>
       </Box>
       <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
         <Tabs isFitted variant="soft-rounded">
